@@ -3,4 +3,4 @@ fastapi
 numpy
 kugglehub
 pytorch
-
+ollama
