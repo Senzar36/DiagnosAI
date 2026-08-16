@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - DiagnosAI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h4>Register for an account:</h4>
+    <form id="RegisterForm" action="/register" method="post">
+        <div id="accountDetails">
+            <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <button type="button" id="continueButton">Continue
+            </button>
+        </div>
+        <div id="importantDetails" style="display: none;">
+            <h4>Enter your important details:</h4>
+            <input type="text" id="full_name" name="full_name" placeholder="Full Name" required><br><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+            <input type="date" id="dob" name="dob" required><br><br>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <br><br>
+            <select id="blood_type" name="blood_type" required>
+                <option value="">Select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <br><br>
+            <input type="text" id="allergies" name="allergies" placeholder="Allergies" required><br><br>
+            <input type="text" id="medical_conditions" name="medical_conditions" placeholder="Medical Conditions" required><br><br>
+            <input type="text" id="emergency_contact" name="emergency_contact" placeholder="Emergency Contact" required><br><br>
+            <input type="text" id="address" name="address" placeholder="Address" required><br><br>
+            <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required><br><br>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

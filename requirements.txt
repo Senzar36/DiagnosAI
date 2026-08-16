@@ -1,6 +1,6 @@
 pandas
 fastapi
 numpy
-kugglehub
+kagglehub
 pytorch
 ollama
