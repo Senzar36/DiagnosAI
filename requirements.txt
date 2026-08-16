@@ -1,6 +1,0 @@
-pandas
-fastapi
-numpy
-kagglehub
-pytorch
-ollama
