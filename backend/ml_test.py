@@ -1,24 +1,24 @@
+import pandas as pd
+
 class machine_learning_health:
     def __init__(self):
         self.model = None
         self.data = None
 
     def load_data(self, data_path):
-        # Load data from the specified path
-        pass
+        self.data = pd.read_csv(data_path)
 
     def preprocess_data(self):
-        # Preprocess the loaded data
-        pass
+        self.preprocess_data()
 
-    def train_model(self):
-        # Train the machine learning model
-        pass
+    def clean_dataset(self):
+        for i in self.data:
+             self.data[i] = self.data[i].fillna(self.data[i].mode()[0])
+
 
     def evaluate_model(self):
-        # Evaluate the trained model
         pass
 
     def save_model(self, model_path):
-        # Save the trained model to the specified path
+        pd.to_pickle(self.model, model_path)
         pass

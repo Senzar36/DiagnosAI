@@ -4,7 +4,6 @@ from database import get_connection
 
 app = FastAPI()
 
-
 class UserRegistration(BaseModel):
     username: str
     password: str
