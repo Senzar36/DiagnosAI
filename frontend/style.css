@@ -1,13 +1,19 @@
 body {
-    background-color: #1b7a5797;
+    background-color: #00000097;
     align-items: center;
     text-align: center;
 }
 
-section {
+html {
+    background-color: #00000097;
+    align-items: center;
+    text-align: center;
+}
+
+section, h1, h2, h3, h4, h5, h6, header, footer, nav, main, article, aside {
     margin: 20px;
     padding: 20px;
-    color: #000000;
+    color: #ffffff;
     border-radius: 10px;
 }
 

@@ -4,3 +4,5 @@ numpy
 kagglehub
 pytorch
 ollama
+bcrypt
+psycopg

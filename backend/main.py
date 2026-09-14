@@ -1,6 +1,8 @@
 from fastapi import FastAPI
+import psycopg
 from pydantic import BaseModel
 from database import get_connection
+import bcrypt
 
 app = FastAPI()
 
@@ -36,6 +38,19 @@ def test_database():
 
 @app.post("/register")
 def register_user(user: UserRegistration):
+    password_hash = bcrypt.hashpw(user.password.encode(), bcrypt.gensalt()).decode()
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("INSERT INTO users (username, password_hash, full_name, email, dob, gender, blood_type, phone_number) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",(user.username, password_hash, user.full_name, user.email, user.dob, user.gender, user.blood_type, user.phone_number))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    cursor.close()
+    conn.close()
+    
     return {
         "message": "Registration data received",
         "username": user.username
