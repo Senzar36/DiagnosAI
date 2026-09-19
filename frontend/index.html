@@ -3,32 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KinCare</title>
+
+    <title>DiagnosAI</title>
+
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>DiagnosAI</h1>
+
+    <header class="navbar">
+
+        <div class="logo">
+            Diagnos<span>AI</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+            <a href="login.html" class="login-link">Login</a>
+            <a href="register.html" class="nav-button">Get Started</a>
+        </nav>
+
     </header>
+
+
     <main>
-        <section id="home">
-            <h2>Welcome to DiagnosAI</h2>
-            <p>Your trusted partner in healthcare.</p>
+
+        <!-- Hero Section -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">AI-ASSISTED HEALTH ANALYSIS</p>
+
+                <h1>
+                    Understand your health
+                    <span>with intelligent analysis.</span>
+                </h1>
+
+                <p class="hero-description">
+                    DiagnosAI combines machine learning and artificial intelligence
+                    to analyze health features and provide a clear explanation of
+                    the predicted condition.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="register.html" class="primary-button">
+                        Get Started
+                    </a>
+
+                    <a href="#how-it-works" class="secondary-button">
+                        Learn How It Works
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="analysis-card">
+
+                    <div class="card-header">
+                        <span class="status-dot"></span>
+                        DiagnosAI Analysis
+                    </div>
+
+                    <div class="analysis-step">
+                        <div class="step-number">01</div>
+
+                        <div>
+                            <h3>Health Features</h3>
+                            <p>Selected by the user</p>
+                        </div>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <div class="analysis-step">
+                        <div class="step-number">02</div>
+
+                        <div>
+                            <h3>ML Prediction</h3>
+                            <p>Condition identified</p>
+                        </div>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <div class="analysis-step">
+                        <div class="step-number">03</div>
+
+                        <div>
+                            <h3>AI Explanation</h3>
+                            <p>Simple and understandable</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>DiagnosAI is a cutting-edge platform that leverages artificial intelligence to provide accurate and timely medical diagnoses. Our mission is to enhance healthcare accessibility and improve patient outcomes through innovative technology.</p>
+
+
+        <!-- How It Works -->
+
+        <section id="how-it-works" class="how-it-works">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">THE PROCESS</p>
+
+                <h2>How DiagnosAI works</h2>
+
+                <p>
+                    A simple workflow combining machine learning with
+                    AI-generated explanations.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <article class="step-card">
+
+                    <div class="step-icon">01</div>
+
+                    <h3>Select Features</h3>
+
+                    <p>
+                        Select the health features that apply to you from
+                        the available options.
+                    </p>
+
+                </article>
+
+
+                <article class="step-card">
+
+                    <div class="step-icon">02</div>
+
+                    <h3>ML Analysis</h3>
+
+                    <p>
+                        The machine learning model analyzes the selected
+                        features and produces a predicted condition.
+                    </p>
+
+                </article>
+
+
+                <article class="step-card">
+
+                    <div class="step-icon">03</div>
+
+                    <h3>AI Explanation</h3>
+
+                    <p>
+                        An AI model provides a concise explanation of the
+                        predicted condition in simple language.
+                    </p>
+
+                </article>
+
+            </div>
+
         </section>
-        <section id="patient_details">
-            <h3>Are you a new patient or do you already have a login?</h3>
-            <h5> If you have a log in <a href="login.html">click here</a></h5>
-            <h5> If you are a new patient <a href="register.html">click here</a></h5>
+
+
+        <!-- About -->
+
+        <section id="about" class="about">
+
+            <div class="about-content">
+
+                <p class="eyebrow">ABOUT DIAGNOSAI</p>
+
+                <h2>
+                    Machine learning for prediction.
+                    AI for understanding.
+                </h2>
+
+                <p>
+                    DiagnosAI is an AI-assisted health analysis platform
+                    designed to combine predictive machine learning with
+                    understandable AI-generated explanations.
+                </p>
+
+                <p>
+                    The machine learning model handles the prediction,
+                    while the language model explains the predicted
+                    condition. This keeps the two roles separate and
+                    makes the system easier to understand.
+                </p>
+
+            </div>
+
         </section>
+
     </main>
+
+
     <footer>
-        <p>&copy; 2026 DiagnosAI. All rights reserved.</p>
-        <p>Built by Anirudh Dhamodaran.</p>
+
+        <div class="footer-logo">
+            Diagnos<span>AI</span>
+        </div>
+
+        <p>
+            &copy; 2026 DiagnosAI. All rights reserved.
+        </p>
+
+        <p>
+            Built by Anirudh Dhamodaran.
+        </p>
+
     </footer>
+
 </body>
 </html>
