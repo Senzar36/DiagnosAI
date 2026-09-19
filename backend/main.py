@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-import psycopg
+from llm import ask_llm
+from typing import Literal
 from pydantic import BaseModel
 from database import get_connection
 import bcrypt
+import psycopg
 
 app = FastAPI()
 
@@ -15,6 +17,13 @@ class UserRegistration(BaseModel):
     gender: str
     blood_type: str
     phone_number: str
+
+class Message(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str
+
+class LLMRequest(BaseModel):
+    messages: list[Message]
 
 @app.get("/")
 def home():
@@ -54,4 +63,33 @@ def register_user(user: UserRegistration):
     return {
         "message": "Registration data received",
         "username": user.username
+    }
+
+@app.post("/ask")
+def ask_ai(request: LLMRequest):
+    messages = [
+        {
+            "role": "system",
+            "content": """
+You are an AI healthcare assistant for DiagnosAI.
+Explain health-related information clearly.
+Do not claim to provide a medical diagnosis.
+Act as a professional healthcare assistant and provide accurate information based on the user's query.
+Do not provide any medical advice or diagnosis.
+Only give information based on the user's query and general health knowledge.
+Keep it as simple and brief as possible, and avoid unnecessary details.
+A ML model will be used to determine the user's health issue.
+Do not assume that as the professional diagnosis.
+Do not ask any follow-up questions to the user.
+Only give information based on the mentioned query.
+"""
+        }
+    ]
+
+    messages.extend(request.messages)
+
+    answer = ask_llm(messages)
+
+    return {
+        "answer": answer
     }

@@ -6,3 +6,4 @@ pytorch
 ollama
 bcrypt
 psycopg
+scikit-learn
