@@ -34,12 +34,16 @@ body {
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
 }
 
-.logo span,
+.logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
 .footer-logo span {
     color: #6c63ff;
 }
@@ -538,6 +542,13 @@ footer {
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s ease;
+}
+
+.form-message {
+    margin: 10px 0 15px;
+    color: #ff6b6b;
+    font-size: 13px;
+    min-height: 18px;
 }
 
 .auth-button:hover {
