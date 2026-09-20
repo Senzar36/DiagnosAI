@@ -1,11 +1,19 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from llm import ask_llm
 from pydantic import BaseModel
 from database import get_connection
 import bcrypt
-import psycopg
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class UserRegistration(BaseModel):
     username: str
@@ -19,6 +27,10 @@ class UserRegistration(BaseModel):
 
 class LLMRequest(BaseModel):
     diagnosis: str
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
 
 @app.get("/")
 def home():
@@ -51,13 +63,46 @@ def register_user(user: UserRegistration):
     conn.commit()
     cursor.close()
     conn.close()
-
-    cursor.close()
-    conn.close()
     
     return {
         "message": "Registration data received",
         "username": user.username
+    }
+
+@app.post("/login")
+def login_user(user: UserLogin):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT password_hash FROM users WHERE username = %s",
+        (user.username,)
+    )
+
+    result = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    if result is None:
+        return {
+            "message": "Invalid username or password"
+        }
+
+    password_hash = result[0]
+
+    if bcrypt.checkpw(
+        user.password.encode(),
+        password_hash.encode()
+    ):
+        return {
+            "message": "Login successful",
+            "username": user.username
+        }
+
+    return {
+        "message": "Invalid username or password"
     }
 
 @app.post("/ask")

@@ -2,3 +2,7 @@
 __pycache__/
 .env
 *.pyc
+Testing_reduced.csv
+Testing.csv
+Training_reduced.csv
+Training.csv
