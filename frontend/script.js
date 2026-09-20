@@ -181,3 +181,138 @@ if (loginForm) {
     });
 
 }
+
+// =========================
+// REGISTRATION
+// =========================
+
+const registerForm = document.getElementById("RegisterForm");
+
+if (registerForm) {
+
+    registerForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const fullName =
+            document.getElementById("full_name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const dob =
+            document.getElementById("dob").value;
+
+        const gender =
+            document.getElementById("gender").value;
+
+        const bloodType =
+            document.getElementById("blood_type").value;
+
+        const phoneNumber =
+            document.getElementById("phone_number").value.trim();
+
+
+        try {
+
+            const response = await fetch(
+                "http://127.0.0.1:8000/register",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        full_name: fullName,
+                        email: email,
+                        dob: dob,
+                        gender: gender,
+                        blood_type: bloodType,
+                        phone_number: phoneNumber
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+
+                alert("Account created successfully.");
+
+                window.location.href = "login.html";
+
+            } else {
+
+                alert("Registration failed.");
+
+                console.error(data);
+
+            }
+
+        } catch (error) {
+
+            alert("Unable to connect to the server.");
+
+            console.error(error);
+
+        }
+
+    });
+
+}
+
+// =========================
+// REGISTRATION FORM
+// =========================
+
+const continueButton =
+    document.getElementById("continueButton");
+
+if (continueButton) {
+
+    continueButton.addEventListener("click", function() {
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        if (username === "" || password === "") {
+
+            alert("Please fill in all fields.");
+            return;
+
+        }
+
+        if (/^\d+$/.test(username)) {
+
+            alert("Username cannot contain only numbers.");
+            return;
+
+        }
+
+        if (password.length < 8) {
+
+            alert("Password must be at least 8 characters long.");
+            return;
+
+        }
+
+        document.getElementById("accountDetails").style.display = "none";
+
+        document.getElementById("importantDetails").style.display = "block";
+
+    });
+
+}
