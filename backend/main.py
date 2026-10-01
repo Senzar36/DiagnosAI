@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from llm import ask_llm
 from pydantic import BaseModel
 from database import get_connection
@@ -34,7 +36,7 @@ class UserLogin(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "DiagnosAI backend is running"}
+    return FileResponse("../frontend/index.html")
 
 @app.get("/test-db")
 def test_database():
@@ -113,3 +115,10 @@ def ask_ai(request: LLMRequest):
         "diagnosis": request.diagnosis,
         "explanation": answer
     }
+    
+app.mount("/", StaticFiles(directory="../frontend", html = True), name="frontend")
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

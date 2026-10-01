@@ -7,3 +7,4 @@ ollama
 bcrypt
 psycopg
 scikit-learn
+joblib
